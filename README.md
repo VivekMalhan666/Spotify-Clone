@@ -1,12 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-###Key Features include:
+### Key Features include:
+
 - User Authentication
 - Responsive Design
 - Fetching the actual "Songs and Playlists"
 - React Hooks
 - React Context API (Like React Redux)
-
 
 ## Available Scripts
 
@@ -20,7 +20,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
@@ -30,4 +29,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
