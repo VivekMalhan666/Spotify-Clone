@@ -4,7 +4,7 @@ import { useDataLayerValue } from "./DataLayer";
 import SearchIcon from "@material-ui/icons/Search";
 import { Avatar } from "@material-ui/core";
 
-function Header() {
+function Header({ spotify }) {
   const [{ user }, dispatch] = useDataLayerValue();
   return (
     <div className="header">
@@ -16,7 +16,7 @@ function Header() {
         />
       </div>
       <div className="header__right">
-        <Avatar src={user?.image[0]?.url} alt={user?.display_name}></Avatar>
+        <Avatar src={user?.images[0]?.url} alt={user?.display_name}></Avatar>
         <h4>{user?.display_name}</h4>
       </div>
     </div>
