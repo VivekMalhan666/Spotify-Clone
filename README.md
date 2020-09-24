@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The project is hosted at spotify-clone-8180d.web.app
+
 ### Key Features include:
 
 - User Authentication
