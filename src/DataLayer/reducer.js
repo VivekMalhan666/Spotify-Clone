@@ -1,5 +1,5 @@
 export const initialState = {
-  user: localStorage.getItem('user') || null,
+  user: null,
   playlists: [],
   spotify: null,
   discover_weekly: null,
@@ -10,6 +10,7 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case 'SET_USER':
       localStorage.setItem('user', action.user);

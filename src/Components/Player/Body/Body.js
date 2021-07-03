@@ -6,10 +6,6 @@ import { useDataLayerValue } from '../../../DataLayer/DataLayer';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: '',
-});
-
 function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useDataLayerValue();
   const [search, setSearch] = useState('');
@@ -60,7 +56,7 @@ function Body({ spotify }) {
   useEffect(() => {
     if (!search) return setSearchResults([]);
     let cancel = false;
-    spotifyApi.searchTracks(search).then((response) => {
+    spotify.searchTracks(search).then((response) => {
       if (cancel) return;
       setSearchResults(response.body.tracks.items);
       return () => (cancel = true);

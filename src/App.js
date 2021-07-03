@@ -23,6 +23,13 @@ function App() {
         token: _token,
       });
 
+      s.getMe().then((user) => {
+        dispatch({
+          type: 'SET_USER',
+          user: user,
+        });
+      });
+
       s.getPlaylist('37i9dQZF1DX4GsmbWgWBBu').then((response) =>
         dispatch({
           type: 'SET_DISCOVER_WEEKLY',
@@ -40,13 +47,6 @@ function App() {
       dispatch({
         type: 'SET_SPOTIFY',
         spotify: s,
-      });
-
-      s.getMe().then((user) => {
-        dispatch({
-          type: 'SET_USER',
-          user: user,
-        });
       });
 
       s.getUserPlaylists().then((playlists) => {
