@@ -13,11 +13,22 @@
   padding: 10px;
   flex: 0.5;
   min-width: 70px;
+  position: relative;
 }
 .header__left > input {
   border: none;
   width: 100%;
+  outline: none;
 }
+.header__left > .header__result-container{
+  position: absolute;
+  width: 100%;
+  background-color: #333333;
+  box-shadow: #333333;
+  top: 50px;
+  border-radius: 15px;
+}
+
 .header__right {
   display: flex;
   align-items: center;

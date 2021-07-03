@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Body.css';
 import SongRow from './SongRows/SongRow';
 import Header from '../../Header/Header';
 import { useDataLayerValue } from '../../../DataLayer/DataLayer';
+import SpotifyWebApi from 'spotify-web-api-node';
 import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: '',
+});
 
 function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState([]);
 
   const playPlaylist = (id) => {
     spotify
@@ -28,6 +36,9 @@ function Body({ spotify }) {
   };
 
   const playSong = (id) => {
+    setSearch('');
+    setSearchResults([]);
+    setPlayingTrack(id);
     spotify
       .play({
         uris: [`spotify:track:${id}`],
@@ -46,9 +57,24 @@ function Body({ spotify }) {
       });
   };
 
+  useEffect(() => {
+    if (!search) return setSearchResults([]);
+    let cancel = false;
+    spotifyApi.searchTracks(search).then((response) => {
+      if (cancel) return;
+      setSearchResults(response.body.tracks.items);
+      return () => (cancel = true);
+    });
+  }, [search]);
+
   return (
     <div className="body">
-      <Header spotify={spotify} />
+      <Header
+        search={search}
+        setSearch={setSearch}
+        searchResults={searchResults}
+        playSong={playSong}
+      />
 
       <div className="body__info">
         <img src={discover_weekly?.images[0].url} alt="" />

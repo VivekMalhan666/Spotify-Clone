@@ -1,15 +1,15 @@
 export const initialState = {
-  user: null,
+  user: localStorage.getItem('user') || null,
   playlists: [],
   spotify: null,
   discover_weekly: null,
   top_artists: null,
   playing: false,
   item: null,
+  token: localStorage.getItem('accessToken') || null,
 };
 
 const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case 'SET_USER':
       localStorage.setItem('user', action.user);
@@ -43,6 +43,7 @@ const reducer = (state, action) => {
       };
 
     case 'SET_TOKEN':
+      localStorage.setItem('accesstoken', action.token);
       return {
         ...state,
         token: action.token,
