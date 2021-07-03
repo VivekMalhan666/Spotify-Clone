@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import "./Footer.css";
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import ShuffleIcon from "@material-ui/icons/Shuffle";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
-import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
-import { Grid, Slider } from "@material-ui/core";
-import { useDataLayerValue } from "./DataLayer";
+import React, { useEffect } from 'react';
+import './Footer.css';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import ShuffleIcon from '@material-ui/icons/Shuffle';
+import RepeatIcon from '@material-ui/icons/Repeat';
+import VolumeDownIcon from '@material-ui/icons/VolumeDown';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import { Grid, Slider } from '@material-ui/core';
+import { useDataLayerValue } from '../../../DataLayer/DataLayer';
 
 function Footer({ spotify }) {
-  const [{ token, item, playing }, dispatch] = useDataLayerValue();
+  const [{ item, playing }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
       console.log(r);
 
       dispatch({
-        type: "SET_PLAYING",
+        type: 'SET_PLAYING',
         playing: r.is_playing,
       });
 
       dispatch({
-        type: "SET_ITEM",
+        type: 'SET_ITEM',
         item: r.item,
       });
     });
@@ -34,13 +34,13 @@ function Footer({ spotify }) {
     if (playing) {
       spotify.pause();
       dispatch({
-        type: "SET_PLAYING",
+        type: 'SET_PLAYING',
         playing: false,
       });
     } else {
       spotify.play();
       dispatch({
-        type: "SET_PLAYING",
+        type: 'SET_PLAYING',
         playing: true,
       });
     }
@@ -50,11 +50,11 @@ function Footer({ spotify }) {
     spotify.skipToNext();
     spotify.getMyCurrentPlayingTrack().then((r) => {
       dispatch({
-        type: "SET_ITEM",
+        type: 'SET_ITEM',
         item: r.item,
       });
       dispatch({
-        type: "SET_PLAYING",
+        type: 'SET_PLAYING',
         playing: true,
       });
     });
@@ -64,11 +64,11 @@ function Footer({ spotify }) {
     spotify.skipToPrevious();
     spotify.getMyCurrentPlayingTrack().then((r) => {
       dispatch({
-        type: "SET_ITEM",
+        type: 'SET_ITEM',
         item: r.item,
       });
       dispatch({
-        type: "SET_PLAYING",
+        type: 'SET_PLAYING',
         playing: true,
       });
     });
@@ -85,7 +85,7 @@ function Footer({ spotify }) {
         {item ? (
           <div className="footer__songInfo">
             <h4>{item.name}</h4>
-            <p>{item.artists.map((artist) => artist.name).join(", ")}</p>
+            <p>{item.artists.map((artist) => artist.name).join(', ')}</p>
           </div>
         ) : (
           <div className="footer__songInfo">

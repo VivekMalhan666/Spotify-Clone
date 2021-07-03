@@ -1,6 +1,6 @@
-import React from "react";
-import "./Login.css";
-import { accessUrl } from "./spotify";
+import React from 'react';
+import './Login.css';
+import { accessUrl } from '../../utils/spotify';
 
 function Login() {
   return (

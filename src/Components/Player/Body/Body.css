@@ -50,8 +50,9 @@
   margin-left: 50px;
   margin-top: 20px;
   color: #1db954;
-  color: invert;
+  filter: invert(100%);
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .body__shuffle:hover {
   transition: 100ms transform ease-in;

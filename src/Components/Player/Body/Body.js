@@ -1,9 +1,9 @@
-import React from "react";
-import "./Body.css";
-import SongRow from "./SongRow";
-import Header from "./Header";
-import { useDataLayerValue } from "./DataLayer";
-import { Favorite, MoreHoriz, PlayCircleFilled } from "@material-ui/icons";
+import React from 'react';
+import './Body.css';
+import SongRow from './SongRows/SongRow';
+import Header from '../../Header/Header';
+import { useDataLayerValue } from '../../../DataLayer/DataLayer';
+import { Favorite, MoreHoriz, PlayCircleFilled } from '@material-ui/icons';
 
 function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useDataLayerValue();
@@ -16,11 +16,11 @@ function Body({ spotify }) {
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
           dispatch({
-            type: "SET_ITEM",
+            type: 'SET_ITEM',
             item: r.item,
           });
           dispatch({
-            type: "SET_PLAYING",
+            type: 'SET_PLAYING',
             playing: true,
           });
         });
@@ -35,11 +35,11 @@ function Body({ spotify }) {
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
           dispatch({
-            type: "SET_ITEM",
+            type: 'SET_ITEM',
             item: r.item,
           });
           dispatch({
-            type: "SET_PLAYING",
+            type: 'SET_PLAYING',
             playing: true,
           });
         });
